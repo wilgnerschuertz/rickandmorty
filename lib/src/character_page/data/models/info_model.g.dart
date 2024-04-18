@@ -6,14 +6,14 @@ part of 'info_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Info _$InfoFromJson(Map<String, dynamic> json) => Info(
+InfoModel _$InfoModelFromJson(Map<String, dynamic> json) => InfoModel(
       count: json['count'] as int,
       pages: json['pages'] as int,
       next: json['next'] as String?,
       prev: json['prev'] as String?,
     );
 
-Map<String, dynamic> _$InfoToJson(Info instance) => <String, dynamic>{
+Map<String, dynamic> _$InfoModelToJson(InfoModel instance) => <String, dynamic>{
       'count': instance.count,
       'pages': instance.pages,
       'next': instance.next,

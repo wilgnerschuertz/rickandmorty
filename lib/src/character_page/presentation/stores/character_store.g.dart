@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'character_controller.dart';
+part of 'character_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,17 @@ part of 'character_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CharacterController on _CharacterControllerBase, Store {
+mixin _$CharacterStore on _CharacterStoreBase, Store {
+  Computed<bool>? _$isLastPageComputed;
+
+  @override
+  bool get isLastPage =>
+      (_$isLastPageComputed ??= Computed<bool>(() => super.isLastPage,
+              name: '_CharacterStoreBase.isLastPage'))
+          .value;
+
   late final _$charactersAtom =
-      Atom(name: '_CharacterControllerBase.characters', context: context);
+      Atom(name: '_CharacterStoreBase.characters', context: context);
 
   @override
   ObservableList<Character> get characters {
@@ -26,7 +34,7 @@ mixin _$CharacterController on _CharacterControllerBase, Store {
   }
 
   late final _$isLoadingAtom =
-      Atom(name: '_CharacterControllerBase.isLoading', context: context);
+      Atom(name: '_CharacterStoreBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -42,7 +50,7 @@ mixin _$CharacterController on _CharacterControllerBase, Store {
   }
 
   late final _$currentPageAtom =
-      Atom(name: '_CharacterControllerBase.currentPage', context: context);
+      Atom(name: '_CharacterStoreBase.currentPage', context: context);
 
   @override
   int get currentPage {
@@ -58,16 +66,15 @@ mixin _$CharacterController on _CharacterControllerBase, Store {
   }
 
   late final _$fetchCharactersAsyncAction =
-      AsyncAction('_CharacterControllerBase.fetchCharacters', context: context);
+      AsyncAction('_CharacterStoreBase.fetchCharacters', context: context);
 
   @override
   Future<void> fetchCharacters(int page) {
     return _$fetchCharactersAsyncAction.run(() => super.fetchCharacters(page));
   }
 
-  late final _$loadMoreCharactersAsyncAction = AsyncAction(
-      '_CharacterControllerBase.loadMoreCharacters',
-      context: context);
+  late final _$loadMoreCharactersAsyncAction =
+      AsyncAction('_CharacterStoreBase.loadMoreCharacters', context: context);
 
   @override
   Future<void> loadMoreCharacters() {
@@ -75,12 +82,31 @@ mixin _$CharacterController on _CharacterControllerBase, Store {
         .run(() => super.loadMoreCharacters());
   }
 
+  late final _$refreshCharactersAsyncAction =
+      AsyncAction('_CharacterStoreBase.refreshCharacters', context: context);
+
+  @override
+  Future<void> refreshCharacters() {
+    return _$refreshCharactersAsyncAction.run(() => super.refreshCharacters());
+  }
+
+  late final _$updateDataInBackgroundAsyncAction = AsyncAction(
+      '_CharacterStoreBase.updateDataInBackground',
+      context: context);
+
+  @override
+  Future<void> updateDataInBackground() {
+    return _$updateDataInBackgroundAsyncAction
+        .run(() => super.updateDataInBackground());
+  }
+
   @override
   String toString() {
     return '''
 characters: ${characters},
 isLoading: ${isLoading},
-currentPage: ${currentPage}
+currentPage: ${currentPage},
+isLastPage: ${isLastPage}
     ''';
   }
 }
