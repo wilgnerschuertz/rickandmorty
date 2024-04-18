@@ -24,13 +24,18 @@ class _CharacterListPageState extends State<CharacterListPage> {
     super.initState();
     store = Modular.get<CharacterController>();
     store.fetchCharacters(1); // Carrega a primeira página inicialmente
-    //verifica se o usuário chegou ao final do scroll (Mudar para uma função fora parte)
-    _scrollController.addListener(() {
-      if (_scrollController.position.atEdge &&
-          _scrollController.position.pixels != 0) {
+    // Atualiza os dados em background para garantir que todos os personagens estejam carregados
+    store.updateDataInBackground();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.atEdge &&
+        _scrollController.position.pixels != 0) {
+      if (!store.isLoading) {
         store.loadMoreCharacters();
       }
-    });
+    }
   }
 
   @override
