@@ -5,7 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rickandmorty/src/character_page/presentation/controllers/character_controller.dart';
+import 'package:rickandmorty/src/character_page/presentation/controllers/character_stores.dart';
 import '../widgets/character_card.dart';
 
 class CharacterListPage extends StatefulWidget {
@@ -16,13 +16,13 @@ class CharacterListPage extends StatefulWidget {
 }
 
 class _CharacterListPageState extends State<CharacterListPage> {
-  late final CharacterController store;
+  late final CharacterStore store;
   final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    store = Modular.get<CharacterController>();
+    store = Modular.get<CharacterStore>();
     store.fetchCharacters(1); // Carrega a primeira página inicialmente
     // Atualiza os dados em background para garantir que todos os personagens estejam carregados
     store.updateDataInBackground();
@@ -65,12 +65,15 @@ class _CharacterListPageState extends State<CharacterListPage> {
               ],
             );
           }
-          return ListView.builder(
-            controller:
-                _scrollController, // Faz a mágica acontecer (Adiciona +1 no page e chama mais personagens (Passar para o controller depois.))
-            itemCount: store.characters.length,
-            itemBuilder: (context, index) =>
-                CharacterCard(character: store.characters[index]),
+          return RefreshIndicator(
+            onRefresh: store.refreshCharacters,
+            child: ListView.builder(
+              controller:
+                  _scrollController, // Faz a mágica acontecer (Adiciona +1 no page e chama mais personagens (Passar para o controller depois.))
+              itemCount: store.characters.length,
+              itemBuilder: (context, index) =>
+                  CharacterCard(character: store.characters[index]),
+            ),
           );
         },
       ),

@@ -6,7 +6,7 @@ import 'package:rickandmorty/src/character_page/presentation/pages/character_det
 import 'data/repositories/character_repository_impl.dart';
 import 'domain/repositories/character_repository.dart';
 import 'domain/usecases/get_all_characters.dart';
-import 'presentation/controllers/character_controller.dart';
+import 'presentation/controllers/character_stores.dart';
 import 'presentation/pages/character_list_page.dart';
 
 class CharactersModule extends Module {
@@ -16,7 +16,7 @@ class CharactersModule extends Module {
         CharacterRemoteDataSource.new); // DataSource
     i.add<CharacterRepository>(CharacterRepositoryImpl.new); // Repository
     i.add<GetAllCharacters>(GetAllCharacters.new); // Caso de uso
-    i.add<CharacterController>(CharacterController.new); // Controller
+    i.add<CharacterStore>(CharacterStore.new); // Controller
     i.add<http.Client>(http.Client.new); // HTTP client
   }
 

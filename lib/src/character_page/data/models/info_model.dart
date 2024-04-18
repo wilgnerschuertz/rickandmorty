@@ -3,19 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 part 'info_model.g.dart';
 
 @JsonSerializable()
-class Info {
+class InfoModel {
   final int count;
   final int pages;
   final String? next;
   final String? prev;
 
-  Info({
+  InfoModel({
     required this.count,
     required this.pages,
     this.next,
     this.prev,
   });
 
-  factory Info.fromJson(Map<String, dynamic> json) => _$InfoFromJson(json);
-  Map<String, dynamic> toJson() => _$InfoToJson(this);
+  factory InfoModel.fromJson(Map<String, dynamic> json) =>
+      _$InfoModelFromJson(json);
+  Map<String, dynamic> toJson() => _$InfoModelToJson(this);
 }
