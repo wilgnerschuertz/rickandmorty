@@ -8,42 +8,6 @@ class CharacterRemoteDataSource {
 
   CharacterRemoteDataSource({required this.client});
 
-  // Future<List<CharacterModel>> fetchCharacters(int page) async {
-  //   final url =
-  //       Uri.parse('https://rickandmortyapi.com/api/character?page=$page');
-  //   final cacheManager = DefaultCacheManager();
-  //   File file;
-  //   String cachedData;
-  //   try {
-  //     // Tentativa de obter o arquivo do cache
-  //     file = await cacheManager.getSingleFile(url.toString());
-  //     cachedData = await file.readAsString();
-  //     if (kDebugMode) {
-  //       print('Dados carregados do cache');
-  //     }
-  //     return _parseCharacters(cachedData);
-  //   } catch (e) {
-  //     if (kDebugMode) {
-  //       print(
-  //           'Cache não encontrado ou dados inválidos no cache. Fazendo requisição HTTP...');
-  //     }
-  //     final response = await client.get(url);
-  //     if (response.statusCode == 200) {
-  //       //Cache antes de processar
-  //       await cacheManager.putFile(url.toString(), response.bodyBytes,
-  //           fileExtension: "json");
-  //       return _parseCharacters(response.body);
-  //     } else {
-  //       throw Exception('Failed to load characters');
-  //     }
-  //   }
-  // }
-  // List<CharacterModel> _parseCharacters(String responseBody) {
-  //   var data = jsonDecode(responseBody) as Map<String, dynamic>;
-  //   List<dynamic> results = data['results'];
-  //   return results.map((e) => CharacterModel.fromJson(e)).toList();
-  // }
-  // Adiciona suporte para verificar o cache antes de uma requisição HTTP
   Future<List<CharacterModel>> fetchCharacters(int page,
       {bool onlyFromCache = false}) async {
     final url =
