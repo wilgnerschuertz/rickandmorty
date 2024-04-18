@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
+
 import 'dart:developer';
 
 import 'package:flutter_modular/flutter_modular.dart';

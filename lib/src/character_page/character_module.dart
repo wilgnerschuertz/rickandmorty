@@ -6,7 +6,7 @@ import 'package:rickandmorty/src/character_page/presentation/pages/character_det
 import 'data/repositories/character_repository_impl.dart';
 import 'domain/repositories/character_repository.dart';
 import 'domain/usecases/get_all_characters.dart';
-import 'presentation/controllers/character_stores.dart';
+import 'presentation/stores/character_store.dart';
 import 'presentation/pages/character_list_page.dart';
 
 class CharactersModule extends Module {

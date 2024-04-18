@@ -5,7 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rickandmorty/src/character_page/presentation/controllers/character_stores.dart';
+import 'package:rickandmorty/src/character_page/presentation/stores/character_store.dart';
 import '../widgets/character_card.dart';
 
 class CharacterListPage extends StatefulWidget {
