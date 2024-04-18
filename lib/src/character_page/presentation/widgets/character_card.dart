@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../domain/entities/character.dart';
@@ -23,12 +24,15 @@ class CharacterCard extends StatelessWidget {
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(8),
                     bottomLeft: Radius.circular(8)),
-                child: Image.network(
-                  character.image,
-                  filterQuality: FilterQuality.high,
+                child: CachedNetworkImage(
+                  imageUrl: character.image,
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                   width: MediaQuery.of(context).size.width * 0.3,
                   height: 100,
+                  filterQuality: FilterQuality.high,
                 ),
               ),
               const SizedBox(width: 10.0),

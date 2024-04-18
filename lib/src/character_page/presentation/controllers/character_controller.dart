@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -25,8 +26,6 @@ abstract class _CharacterControllerBase with Store {
 
   @action
   Future<void> fetchCharacters(int page) async {
-    // isLoading = true;
-
     try {
       final fetchedCharacters = await getAllCharacters(page);
       log('${fetchedCharacters.length} characters fetched');
@@ -40,10 +39,29 @@ abstract class _CharacterControllerBase with Store {
 
       characters.addAll(fetchedCharacters); // Adiciona novos personagens
       currentPage = page;
-
-      // characters = ObservableList.of(fetchedCharacters);
     } catch (e) {
-      // Handle exceptions, possibly show an error message
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  @action
+  void updateDataInBackground() async {
+    int currentPage = 1;
+    int previousCount = 0;
+
+    while (true) {
+      previousCount =
+          characters.length; // Armazena o número anterior de personagens
+
+      await fetchCharacters(currentPage); // Chama para buscar personagens
+
+      if (characters.length == previousCount) {
+        break; // Se o número de personagens não aumentou, significa que não há mais dados ou houve um erro
+      }
+
+      currentPage++; // Incrementa a página para a próxima chamada
     }
   }
 

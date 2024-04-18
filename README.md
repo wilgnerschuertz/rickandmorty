@@ -1,10 +1,18 @@
 # rickandmorty
 
-Projeto do desafio do Roraima Dev's
-Iniciado em: 15 de Abril de 2024 :)
+rrfullstack-challenger
 
-Pacotes utilizados.
-flutter pub add flutter_modular flutter_mobx intl get_storage http json_annotation
+~ Proposta:
 
-Pacotes --dev utilizados.
-flutter pub add mobx_codegen build_runner json_serializable --dev
+Utilizando a api do Rick and Morty > https://rickandmortyapi.com
+
+
+Tela de listagem de personagens. OK
+Paginação da lista de personagens. OK (Scroll infinito heheh)
+Suporte a rotação de tela (orientações portrait e landscape). OK
+Uso de Dependency Injection OK.
+Uso de uma arquitetura de responsabilidades bem definida (como MVVM, por exemplo); (Clean) OK
+Tela de detalhes do personagem.
+Filtros de personagem.
+Suporte ao modo offline (cachear localmente response da API). (flutter_cache_manager e cached_network_image)OK
+Adicionar regras do Proguard.
