@@ -116,38 +116,5 @@ class CharacterCard extends StatelessWidget {
         ),
       ),
     );
-    // Card(
-    // elevation: 0.3,
-    // margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-    // child: ListTile(
-    //   leading: CircleAvatar(
-    //     backgroundImage: NetworkImage(character.image),
-    //     radius: 32,
-    //   ),
-    //   title: Text(
-    //     character.name,
-    //     style: const TextStyle(
-    //       fontWeight: FontWeight.w400,
-    //     ),
-    //   ),
-    //   subtitle: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       Text(character.species),
-    //       Text(character.status),
-    //     ],
-    //   ),
-    // trailing: IconButton(
-    //   icon: const Icon(Icons.arrow_forward),
-    //   onPressed: () {
-    //     showModalBottomSheet(
-    //         context: context,
-    //         builder: (BuildContext context) {
-    //           return const Text('hello');
-    //         });
-    //   },
-    // ),
-    // ),
-    // );
   }
 }
