@@ -1,5 +1,3 @@
-// ignore_for_file: unused_field
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -23,8 +21,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
   void initState() {
     super.initState();
     store = Modular.get<CharacterStore>();
-    store.fetchCharacters(1); // Carrega a primeira página inicialmente
-    // Atualiza os dados em background para garantir que todos os personagens estejam carregados
+    store.fetchCharacters(1);
     store.updateDataInBackground();
     _scrollController.addListener(_onScroll);
   }
@@ -32,7 +29,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
   void _onScroll() {
     if (_scrollController.position.atEdge &&
         _scrollController.position.pixels != 0) {
-      if (!store.isLoading) {
+      if (!store.state.isLoading && !store.isLastPage) {
         store.loadMoreCharacters();
       }
     }
@@ -49,7 +46,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
       ),
       body: Observer(
         builder: (_) {
-          if (store.isLoading) {
+          if (store.state.isLoading) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,11 +65,10 @@ class _CharacterListPageState extends State<CharacterListPage> {
           return RefreshIndicator(
             onRefresh: store.refreshCharacters,
             child: ListView.builder(
-              controller:
-                  _scrollController, // Faz a mágica acontecer (Adiciona +1 no page e chama mais personagens (Passar para o controller depois.))
-              itemCount: store.characters.length,
+              controller: _scrollController,
+              itemCount: store.state.characters.length,
               itemBuilder: (context, index) =>
-                  CharacterCard(character: store.characters[index]),
+                  CharacterCard(character: store.state.characters[index]),
             ),
           );
         },
@@ -82,7 +78,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
 
   @override
   void dispose() {
-    _scrollController.dispose(); //dispor o controlador ao sair da tela
+    _scrollController.dispose(); // Dispor o controlador ao sair da tela
     super.dispose();
   }
 }

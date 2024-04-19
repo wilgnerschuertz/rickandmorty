@@ -17,51 +17,19 @@ mixin _$CharacterStore on _CharacterStoreBase, Store {
               name: '_CharacterStoreBase.isLastPage'))
           .value;
 
-  late final _$charactersAtom =
-      Atom(name: '_CharacterStoreBase.characters', context: context);
+  late final _$stateAtom =
+      Atom(name: '_CharacterStoreBase.state', context: context);
 
   @override
-  ObservableList<Character> get characters {
-    _$charactersAtom.reportRead();
-    return super.characters;
+  CharacterState get state {
+    _$stateAtom.reportRead();
+    return super.state;
   }
 
   @override
-  set characters(ObservableList<Character> value) {
-    _$charactersAtom.reportWrite(value, super.characters, () {
-      super.characters = value;
-    });
-  }
-
-  late final _$isLoadingAtom =
-      Atom(name: '_CharacterStoreBase.isLoading', context: context);
-
-  @override
-  bool get isLoading {
-    _$isLoadingAtom.reportRead();
-    return super.isLoading;
-  }
-
-  @override
-  set isLoading(bool value) {
-    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
-      super.isLoading = value;
-    });
-  }
-
-  late final _$currentPageAtom =
-      Atom(name: '_CharacterStoreBase.currentPage', context: context);
-
-  @override
-  int get currentPage {
-    _$currentPageAtom.reportRead();
-    return super.currentPage;
-  }
-
-  @override
-  set currentPage(int value) {
-    _$currentPageAtom.reportWrite(value, super.currentPage, () {
-      super.currentPage = value;
+  set state(CharacterState value) {
+    _$stateAtom.reportWrite(value, super.state, () {
+      super.state = value;
     });
   }
 
@@ -103,9 +71,7 @@ mixin _$CharacterStore on _CharacterStoreBase, Store {
   @override
   String toString() {
     return '''
-characters: ${characters},
-isLoading: ${isLoading},
-currentPage: ${currentPage},
+state: ${state},
 isLastPage: ${isLastPage}
     ''';
   }
