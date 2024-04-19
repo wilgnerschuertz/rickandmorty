@@ -128,17 +128,6 @@ class CharacterDetailCard extends StatelessWidget {
             ),
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.start,
-        //     children: [
-        //       Text('Featured Episodes',
-        //           style: GoogleFonts.poppins(
-        //               fontSize: 18, fontWeight: FontWeight.w400)),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }
